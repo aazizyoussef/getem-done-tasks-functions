@@ -9,6 +9,9 @@ using Microsoft.WindowsAzure.Storage.Table;
 using GetemDoneTasksFunctions.Entities;
 using System.Security.Claims;
 using System.Linq;
+using System.Runtime.Serialization.Json;
+using System.IO;
+using System.Text;
 
 namespace GetemDoneTasksFunctions
 {
@@ -19,8 +22,15 @@ namespace GetemDoneTasksFunctions
                                                           [Table("Todo", Connection = "TodosConnection")]ICollector<Todo> todos, 
                                                           TraceWriter log)
         {
-            dynamic data = await req.Content.ReadAsAsync<object>();
-            string description = data?.Description;
+            var data = await req.Content.ReadAsStringAsync();
+            string description = null;
+
+            using (var ms = new MemoryStream(Encoding.Unicode.GetBytes(data)))
+            {
+                DataContractJsonSerializer deserializer = new DataContractJsonSerializer(typeof(Todo));
+                Todo todo = (Todo)deserializer.ReadObject(ms);
+                description = todo?.Description;
+            }
 
             if (description == null)
             {

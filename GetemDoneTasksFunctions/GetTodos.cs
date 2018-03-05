@@ -22,7 +22,11 @@ namespace GetemDoneTasksFunctions
 
             var userTodos = todos.Where(t => t.UserId == userId);
 
-            var response = req.CreateResponse(HttpStatusCode.OK, userTodos.ToList());
+            var response = req.CreateResponse(HttpStatusCode.OK, userTodos.Select(t=>new Model.Todo() {
+                TodoId = t.RowKey,
+                Description = t.Description,
+                UserId = t.UserId
+            }).ToList());
             return response;
         }
 

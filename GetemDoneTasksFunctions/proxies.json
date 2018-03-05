@@ -9,7 +9,8 @@
       "responseOverrides": {
         "response.headers.Access-Control-Allow-Origin": "http://localhost:3000",
         "response.headers.Access-Control-Allow-Credentials": "true",
-        "response.headers.Access-Control-Allow-Methods": "POST, GET, OPTIONS"
+        "response.headers.Access-Control-Allow-Methods": "POST, GET, OPTIONS",
+        "response.headers.Access-Control-Allow-Headers": "Content-Type"
       }
     },
     "addtodo-proxy": {
@@ -20,7 +21,8 @@
       "responseOverrides": {
         "response.headers.Access-Control-Allow-Origin": "https://getem-done-ui.azurewebsites.net",
         "response.headers.Access-Control-Allow-Credentials": "true",
-        "response.headers.Access-Control-Allow-Methods": "POST, GET, OPTIONS"
+        "response.headers.Access-Control-Allow-Methods": "POST, GET, OPTIONS",
+        "response.headers.Access-Control-Allow-Headers": "Content-Type"
       }
     },
     "gettodos-local-proxy": {
@@ -31,7 +33,8 @@
       "responseOverrides": {
         "response.headers.Access-Control-Allow-Origin": "http://localhost:3000",
         "response.headers.Access-Control-Allow-Credentials": "true",
-        "response.headers.Access-Control-Allow-Methods": "GET, OPTIONS"
+        "response.headers.Access-Control-Allow-Methods": "GET, OPTIONS",
+        "response.headers.Access-Control-Allow-Headers": "Content-Type"
       }
     },
     "gettodos-proxy": {
@@ -42,7 +45,8 @@
       "responseOverrides": {
         "response.headers.Access-Control-Allow-Origin": "https://getem-done-ui.azurewebsites.net",
         "response.headers.Access-Control-Allow-Credentials": "true",
-        "response.headers.Access-Control-Allow-Methods": "GET, OPTIONS"
+        "response.headers.Access-Control-Allow-Methods": "GET, OPTIONS",
+        "response.headers.Access-Control-Allow-Headers": "Content-Type"
       }
     }
   }
