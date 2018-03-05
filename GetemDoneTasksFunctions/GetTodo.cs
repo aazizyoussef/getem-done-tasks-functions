@@ -10,9 +10,9 @@ using GetemDoneTasksFunctions.Entities;
 
 namespace GetemDoneTasksFunctions
 {
-    public static class GetTodos
+    public static class GetTodo
     {
-        [FunctionName("GetTodos")]
+        [FunctionName("GetTodo")]
         public static HttpResponseMessage Run([HttpTrigger(AuthorizationLevel.Anonymous, "get")]HttpRequestMessage req, 
                                               [Table("Todo", Connection = "TodosConnection")]IQueryable<Todo> todos, 
                                               TraceWriter log)

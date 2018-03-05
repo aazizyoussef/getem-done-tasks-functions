@@ -1,51 +1,27 @@
 ﻿{
   "$schema": "http://json.schemastore.org/proxies",
   "proxies": {
-    "addtodo-local-proxy": {
+    "todo-local": {
       "matchCondition": {
-        "route": "/addtodo-local"
+        "route": "/todo-local/{*rest}"
       },
-      "backendUri": "http://getem-done-tasks-functions.azurewebsites.net/api/AddTodo",
+      "backendUri": "http://getem-done-tasks-functions.azurewebsites.net/api/{rest}Todo",
       "responseOverrides": {
         "response.headers.Access-Control-Allow-Origin": "http://localhost:3000",
         "response.headers.Access-Control-Allow-Credentials": "true",
-        "response.headers.Access-Control-Allow-Methods": "POST, GET, OPTIONS",
+        "response.headers.Access-Control-Allow-Methods": "POST, OPTIONS",
         "response.headers.Access-Control-Allow-Headers": "Content-Type"
       }
     },
-    "addtodo-proxy": {
+    "todo": {
       "matchCondition": {
-        "route": "/addtodo"
+        "route": "/todo/{*rest}"
       },
-      "backendUri": "http://getem-done-tasks-functions.azurewebsites.net/api/AddTodo",
+      "backendUri": "http://getem-done-tasks-functions.azurewebsites.net/api/{rest}Todo",
       "responseOverrides": {
         "response.headers.Access-Control-Allow-Origin": "https://getem-done-ui.azurewebsites.net",
         "response.headers.Access-Control-Allow-Credentials": "true",
-        "response.headers.Access-Control-Allow-Methods": "POST, GET, OPTIONS",
-        "response.headers.Access-Control-Allow-Headers": "Content-Type"
-      }
-    },
-    "gettodos-local-proxy": {
-      "matchCondition": {
-        "route": "/gettodos-local"
-      },
-      "backendUri": "http://getem-done-tasks-functions.azurewebsites.net/api/GetTodos",
-      "responseOverrides": {
-        "response.headers.Access-Control-Allow-Origin": "http://localhost:3000",
-        "response.headers.Access-Control-Allow-Credentials": "true",
-        "response.headers.Access-Control-Allow-Methods": "GET, OPTIONS",
-        "response.headers.Access-Control-Allow-Headers": "Content-Type"
-      }
-    },
-    "gettodos-proxy": {
-      "matchCondition": {
-        "route": "/gettodos"
-      },
-      "backendUri": "http://getem-done-tasks-functions.azurewebsites.net/api/GetTodos",
-      "responseOverrides": {
-        "response.headers.Access-Control-Allow-Origin": "https://getem-done-ui.azurewebsites.net",
-        "response.headers.Access-Control-Allow-Credentials": "true",
-        "response.headers.Access-Control-Allow-Methods": "GET, OPTIONS",
+        "response.headers.Access-Control-Allow-Methods": "POST, OPTIONS",
         "response.headers.Access-Control-Allow-Headers": "Content-Type"
       }
     }

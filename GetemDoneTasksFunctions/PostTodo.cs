@@ -15,9 +15,9 @@ using System.Text;
 
 namespace GetemDoneTasksFunctions
 {
-    public static class AddTodo
+    public static class PostTodo
     {
-        [FunctionName("AddTodo")]
+        [FunctionName("PostTodo")]
         public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "post")]HttpRequestMessage req, 
                                                           [Table("Todo", Connection = "TodosConnection")]ICollector<Todo> todos, 
                                                           TraceWriter log)
@@ -25,6 +25,10 @@ namespace GetemDoneTasksFunctions
             var data = await req.Content.ReadAsStringAsync();
             string description = null;
 
+            if (string.IsNullOrEmpty(data))
+            {
+                return req.CreateResponse(HttpStatusCode.BadRequest, "Empty request body.");
+            }
             using (var ms = new MemoryStream(Encoding.Unicode.GetBytes(data)))
             {
                 DataContractJsonSerializer deserializer = new DataContractJsonSerializer(typeof(Todo));
